@@ -9,7 +9,7 @@ class FileUploadRequest(BaseModel):
     description: Optional[str] = None
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bucket_name": "my-s3-bucket",
                 "file_path": "/path/to/local/file.jpg",
@@ -25,7 +25,7 @@ class FileUploadResponse(BaseModel):
     bucket_name: str
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "message": "File uploaded successfully",
                 "object_name": "folder/file.jpg",
@@ -39,7 +39,7 @@ class FileDownloadRequest(BaseModel):
     object_name: str
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bucket_name": "my-s3-bucket",
                 "object_name": "folder/file.jpg"
@@ -62,7 +62,7 @@ def FileDeleteRequest(BaseModel):
     object_name: str
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "bucket_name": "my-s3-bucket",
                 "object_name": "folder/file.jpg"

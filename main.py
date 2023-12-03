@@ -2,6 +2,7 @@
 from typing import List
 
 from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi.responses import RedirectResponse
 
 import my_schemas
 import my_services
@@ -11,8 +12,8 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    """Initial landing page for CRUD Services"""
-    return {"message": "Hello World"}
+    """Redirect to OpenAPI docs"""
+    return RedirectResponse(url='/docs')
 
 
 @app.post("/upload/", response_model=my_schemas.FileUploadRequest)
