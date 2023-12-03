@@ -15,11 +15,6 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    """Test Get Method"""
-    return {"message": f"Hello {name}"}
-
 @app.post("/upload/", response_model=my_schemas.FileUploadRequest)
 async def upload_file(file_upload: UploadFile = File(...), bucket: str = "your-default-bucket"):
     """Upload file to S3"""
