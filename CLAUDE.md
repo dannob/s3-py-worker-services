@@ -29,6 +29,38 @@ uvicorn main:app --reload
 Note: The README mentions `uvicorn app.main:app --reload` but the correct command is `uvicorn main:app --reload` based on the actual file structure.
 
 ### Testing
+
+#### Running Tests
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=. --cov-report=html
+
+# Run specific test file
+pytest tests/unit/test_services.py
+
+# Run specific test class
+pytest tests/unit/test_services.py::TestUploadFileToS3
+
+# Run specific test method
+pytest tests/unit/test_services.py::TestUploadFileToS3::test_upload_file_success
+
+# Run integration tests only
+pytest tests/integration/
+
+# Run unit tests only
+pytest tests/unit/
+```
+
+#### Test Structure
+- **Unit Tests**: `tests/unit/` - Mock S3 client, test individual functions
+- **Integration Tests**: `tests/integration/` - Test API endpoints with FastAPI TestClient
+- **Fixtures**: `tests/conftest.py` - Shared test utilities and cleanup
+- **Configuration**: `pytest.ini` - Test runner configuration and coverage settings
+
+#### Manual Testing
 - Use the provided `test_main.http` file for HTTP endpoint testing
 - Access interactive API docs at http://127.0.0.1:8000/docs (root endpoint redirects here)
 

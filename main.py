@@ -16,7 +16,7 @@ async def root():
     return RedirectResponse(url='/docs')
 
 
-@app.post("/upload/", response_model=my_schemas.FileUploadRequest)
+@app.post("/upload/", response_model=my_schemas.FileUploadResponse)
 async def upload_file(file_upload: UploadFile = File(...), bucket: str = "your-default-bucket"):
     """Upload file to S3"""
     file_location = f"temp/{file_upload.filename}"

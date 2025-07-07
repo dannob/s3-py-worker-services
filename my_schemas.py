@@ -57,7 +57,7 @@ class FileListResponse(BaseModel):
     files: List[str]
 
 
-def FileDeleteRequest(BaseModel):
+class FileDeleteRequest(BaseModel):
     bucket_name: str
     object_name: str
 
